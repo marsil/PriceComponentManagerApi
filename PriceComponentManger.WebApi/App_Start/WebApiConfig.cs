@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using Newtonsoft.Json.Serialization;
 
@@ -21,6 +22,9 @@ namespace PriceComponentManger.WebApi
 
 			var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
 			jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+	        config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+	        config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
 	        //config.Routes.MapHttpRoute(
 	        //	name: "DefaultApi",

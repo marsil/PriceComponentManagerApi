@@ -7,6 +7,7 @@ namespace PriceComponentManager.WebApi.Test.TestData
 	{
 		public static CarRentalDto GetCarRental()
 		{
+			var date = DateTime.Today.AddDays(-(new Random()).Next(1, 1000));
 			return new CarRentalDto
 				       {
 					       MarketUnitCode = "VS",
@@ -17,8 +18,8 @@ namespace PriceComponentManager.WebApi.Test.TestData
 					       Category = "A",
 					       Duration = "2",
 					       Amount = 900,
-					       DateFrom = new DateTime(2014, 1, 10),
-					       DateTo = new DateTime(2014, 2, 10),
+					       DateFrom = date,
+					       DateTo = date.AddDays(7),
 					       ContractCost = 500,
 					       CurrencyCode = "EUR",
 					       Cost = "500",

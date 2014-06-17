@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Web.Http;
+using PriceComponentManger.WebApi.Configuration;
 
 namespace PriceComponentManger.WebApi
 {
@@ -13,6 +14,7 @@ namespace PriceComponentManger.WebApi
 
 		protected void Application_BeginRequest(object sender, EventArgs e)
 		{
+			//ServiceProvider<CarRentalDto>.Database.AddQuery()
 		}
 
 		protected void Application_Error(object sender, EventArgs e)

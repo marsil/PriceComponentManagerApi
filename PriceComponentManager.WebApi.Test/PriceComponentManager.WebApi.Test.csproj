@@ -72,7 +72,7 @@
     <Compile Include="Controllers\PriceComponentControllerTest.cs" />
     <Compile Include="Extension\ObjectExtension.cs" />
     <Compile Include="Infrastucture\WebRequestExecutor.cs" />
-    <Compile Include="Infrastucture\TestBase.cs" />
+    <Compile Include="Infrastucture\TestSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestData\CarRentalTestData.cs" />
     <Compile Include="TestData\PriceComponentTestData.cs" />

@@ -11,7 +11,6 @@ namespace PriceComponentManger.WebApi.Controllers
 	{
 		public IHttpActionResult Get(string priceComponentCodes = "", string marketUnitCode = "", DateTime? fromDate = null, DateTime? toDate = null, string userId = "")
 		{
-			//ServiceProvider<CarRentalDto>.Database.AddQuery()
 			return this.GetData(CarRentalQuery.GetCarRentalQueryData);
 		}
 
