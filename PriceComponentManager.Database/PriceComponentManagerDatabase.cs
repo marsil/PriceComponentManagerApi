@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
+using PriceComponentManager.Database.Common;
 using PriceComponentManager.Database.Dto;
 using PriceComponentManager.Database.Enums;
 
@@ -16,6 +16,7 @@ namespace PriceComponentManager.Database
 			var parameters = new List<SqlParameter>
 				                 {
 									new SqlParameter("@Id", SqlDbType.UniqueIdentifier, 16) { Value = eventDto.UniqueId },
+									new SqlParameter("@UserId", eventDto.UserId),
 									new SqlParameter("@Type", eventDto.Type.ToString()),
 					 				new SqlParameter("EntityType", eventDto.EntityType.ToString()),
 									new SqlParameter("@Data", JsonConvert.SerializeObject(eventDto.Data)),
@@ -24,24 +25,8 @@ namespace PriceComponentManager.Database
 									new SqlParameter("@Version", eventDto.Version)
 				                 };
 
-			DatabaseExecutor.Insert("INSERT INTO [dbo].[Event] VALUES(@Id, @Type, @EntityType, @Data, @StartTime, @EndTime, @Version)", parameters);
+			DatabaseExecutor.Insert("INSERT INTO [dbo].[Event] VALUES(@Id, @UserId, @Type, @EntityType, @Data, @StartTime, @EndTime, @Version)", parameters);
 		}
-
-		//public Task<int> AddEvent<T>(EventDto<T> eventDto)
-		//{
-		//	var parameters = new List<SqlParameter>
-		//						 {
-		//							new SqlParameter("@Id", SqlDbType.UniqueIdentifier, 16) { Value = eventDto.UniqueId },
-		//							new SqlParameter("@Type", eventDto.Type.ToString()),
-		//							new SqlParameter("EntityType", eventDto.EntityType.ToString()),
-		//							new SqlParameter("@Data", JsonConvert.SerializeObject(eventDto.Data)),
-		//							new SqlParameter("@StartTime", eventDto.StartTime),
-		//							new SqlParameter("@EndTime", eventDto.EndTime ?? DateTime.UtcNow),
-		//							new SqlParameter("@Version", eventDto.Version)
-		//						 };
-
-		//	return DatabaseExecutor.Insert("INSERT INTO [dbo].[Event] VALUES(@Id, @Type, @EntityType, @Data, @StartTime, @EndTime, @Version)", parameters);
-		//}
 
 		public List<EventDto<T>> GetEvents<T>(EntityType entityType)
 		{
@@ -49,36 +34,42 @@ namespace PriceComponentManager.Database
 			return DatabaseExecutor.Select<T>(@"SELECT [Id], [RowNr], [Type], [EntityType], [Data], [StartTime], [EndTime], [Version] FROM [dbo].[Event] WHERE EntityType = @EntityType ORDER BY RowNr", parameters);
 		}
 
-		//public Task<List<EventDto<T>>> GetEvents<T>(EntityType entityType)
-		//{
-		//	var parameters = new List<SqlParameter> { new SqlParameter("EntityType", entityType.ToString()) };
-		//	return DatabaseExecutor.Select<T>(@"SELECT [Id], [RowNr], [Type], [EntityType], [Data], [StartTime], [EndTime], [Version] FROM [dbo].[Event] WHERE EntityType = @EntityType ORDER BY RowNr", parameters);
-		//}
-
 		public List<EventDto<T>> GetAllEvents<T>()
 		{
 			return DatabaseExecutor.Select<T>(@"SELECT [Id], [RowNr], [Type], [EntityType], [Data], [StartTime], [EndTime], [Version] FROM [dbo].[Event] ORDER BY RowNr");
 		}
 
-		//public Task<List<EventDto<T>>> GetAllEvents<T>()
-		//{
-		//	return DatabaseExecutor.Select<T>(@"SELECT [Id], [RowNr], [Type], [EntityType], [Data], [StartTime], [EndTime], [Version] FROM [dbo].[Event] ORDER BY RowNr");
-		//}
-
-		public void AddQuery<TParameter, TData>(QueryDto<TParameter, TData> queryDto)
+		public void AddQuery(QueryDto queryDto)
 		{
 			var parameters = new List<SqlParameter>
 				                 {
 									new SqlParameter("@Id", SqlDbType.UniqueIdentifier, 16) { Value = queryDto.UniqueId },
-					 				new SqlParameter("EntityType", queryDto.EntityType.ToString()),
-									new SqlParameter("Parameters", JsonConvert.SerializeObject(queryDto.Parameters)),
-									new SqlParameter("Url", queryDto.Url),
-									new SqlParameter("@Data", JsonConvert.SerializeObject(queryDto.Data)),
+					 				new SqlParameter("@UserId", queryDto.UserId),
+									new SqlParameter("@Url", queryDto.Url),
+									new SqlParameter("@Parameters", queryDto.Parameters),
+									new SqlParameter("@Data", queryDto.Data),
 									new SqlParameter("@StartTime", queryDto.StartTime),
 									new SqlParameter("@EndTime", queryDto.EndTime ?? DateTime.UtcNow),
 				                 };
 
-			DatabaseExecutor.Insert("INSERT INTO [dbo].[Query] VALUES(@Id, @EntityType, @Parameters, @Url, @Data, @StartTime, @EndTime)", parameters);
+			DatabaseExecutor.Insert("INSERT INTO [dbo].[Query] VALUES(aaa @Id, @UserId, @Url, @Parameters, @Data, @StartTime, @EndTime)", parameters);
+		}
+
+		public void AddException(ExceptionDto exceptionDto)
+		{
+			var parameters = new List<SqlParameter>
+				                 {
+									new SqlParameter("@Id", SqlDbType.UniqueIdentifier, 16) { Value = exceptionDto.UniqueId },
+					 				new SqlParameter("@UserId", exceptionDto.UserId),
+									new SqlParameter("@Url", exceptionDto.Url),
+									new SqlParameter("@Parameters", exceptionDto.Parameters),
+									new SqlParameter("@Message", exceptionDto.Messsage),
+									new SqlParameter("@Source", exceptionDto.Source),
+									new SqlParameter("@StackTrace", exceptionDto.StackTrace),
+									new SqlParameter("@Time", exceptionDto.Time),
+				                 };
+
+			DatabaseExecutor.Insert("INSERT INTO [dbo].[Exception] VALUES(@Id, @UserId, @Url, @Parameters, @Message, @Source, @StackTrace, @Time)", parameters);
 		}
 	}
 }

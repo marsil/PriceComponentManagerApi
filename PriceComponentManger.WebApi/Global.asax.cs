@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Text;
 using System.Web.Http;
+using PriceComponentManager.Database.Dto;
 using PriceComponentManger.WebApi.Configuration;
 
 namespace PriceComponentManger.WebApi
@@ -14,26 +15,48 @@ namespace PriceComponentManger.WebApi
 
 		protected void Application_BeginRequest(object sender, EventArgs e)
 		{
-			//ServiceProvider<CarRentalDto>.Database.AddQuery()
+			if (Request.Path == "/") return;
+
+			var bytes = Request.BinaryRead(Request.TotalBytes);
+			var data = Encoding.UTF8.GetString(bytes);
+
+			var queryDto = new QueryDto
+				        {
+							UniqueId = Guid.NewGuid(),
+							UserId = "2000",
+					        Url = Request.Path,
+							Parameters = Request.QueryString.ToString(),
+							Data = data,
+							StartTime = DateTime.UtcNow, 
+				        };
+
+			ServiceProvider<QueryDto>.Database.AddQuery(queryDto);
+		}
+
+		protected void Application_EndRequest(object sender, EventArgs e)
+		{
+			if(Request.Path == "/") return;
+
+			//ServiceProvider<GenericDto>.Database.AddQuery(queryDto);
 		}
 
 		protected void Application_Error(object sender, EventArgs e)
 		{
-			//get reference to the source of the exception chain
 			var exception = Server.GetLastError().GetBaseException();
 
-			//log the details of the exception and page state to the
-			//Windows 2000 Event Log
-			EventLog.WriteEntry("Test Web",
-			  "MESSAGE: " + exception.Message +
-			  "\nSOURCE: " + exception.Source +
-			  "\nFORM: " + Request.Form.ToString() +
-			  "\nQUERYSTRING: " + Request.QueryString.ToString() +
-			  "\nTARGETSITE: " + exception.TargetSite +
-			  "\nSTACKTRACE: " + exception.StackTrace,
-			  EventLogEntryType.Error);
+			var exceptionDto = new ExceptionDto
+				        {
+					        UniqueId = Guid.NewGuid(),
+					        UserId = "2000",
+					        Url = Request.Path,
+					        Parameters = Request.QueryString.ToString(),
+					        Messsage = exception.Message,
+					        Source = exception.Source,
+					        StackTrace = exception.StackTrace,
+					        Time = DateTime.UtcNow
+				        };
 
-			//Insert optional email notification here...
+			ServiceProvider<ExceptionDto>.Database.AddException(exceptionDto);
 		}
     }
 }

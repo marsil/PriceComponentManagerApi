@@ -89,7 +89,6 @@
     <Compile Include="Commands\EventCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Common\EventDtoCreator.cs" />
-    <Compile Include="Common\QueryDtoCreator.cs" />
     <Compile Include="Configuration\ContainerBootStrapper.cs" />
     <Compile Include="Configuration\ServiceProvider.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -108,6 +107,7 @@
     <Compile Include="Queries\CarRentalQuery.cs" />
     <Compile Include="Storage\EventRepository.cs" />
     <Compile Include="Storage\IDataRepository.cs" />
+    <Compile Include="Storage\IQueryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1,6 +1,5 @@
 ﻿using PriceComponentManager.Database;
 using PriceComponentManager.Database.Dto;
-
 using PriceComponentManger.WebApi.Messaging;
 using PriceComponentManger.WebApi.Storage;
 using StructureMap;

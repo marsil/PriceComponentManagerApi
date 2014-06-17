@@ -12,6 +12,8 @@ namespace PriceComponentManager.Database
 
 		List<EventDto<T>> GetAllEvents<T>();
 
-		void AddQuery<TParameter, TData>(QueryDto<TParameter, TData> queryDto);
+		void AddQuery(QueryDto queryDto);
+
+		void AddException(ExceptionDto exceptionDto);
 	}
 }

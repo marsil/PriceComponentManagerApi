@@ -11,6 +11,7 @@ namespace PriceComponentManger.WebApi.Common
 			return new EventDto<T>
 				{
 					UniqueId = Guid.NewGuid(),
+					UserId = "2000",
 					Data = data,
 					StartTime = DateTime.UtcNow,
 					Type = envenType,

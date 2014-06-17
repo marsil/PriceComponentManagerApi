@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseExecutor.cs" />
+    <Compile Include="Common\DatabaseExecutor.cs" />
     <Compile Include="Dto\CarRentalDto.cs" />
     <Compile Include="Dto\EventDto.cs" />
+    <Compile Include="Dto\ExceptionDto.cs" />
+    <Compile Include="Dto\GenericDto.cs" />
     <Compile Include="Dto\IHaveUniqueId.cs" />
     <Compile Include="Dto\PriceComponentDto.cs" />
     <Compile Include="Dto\QueryDto.cs" />
@@ -56,7 +58,6 @@
     <Compile Include="Enums\EnumConverter.cs" />
     <Compile Include="Enums\EventType.cs" />
     <Compile Include="Enums\StringValueAttribute.cs" />
-    <Compile Include="Event.cs" />
     <Compile Include="IDatabase.cs" />
     <Compile Include="PriceComponentManagerDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,6 +67,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Migrations\CreateEventTable.sql" />
+    <Content Include="Migrations\CreateExceptionTable.sql" />
+    <Content Include="Migrations\CreateQueryTable.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

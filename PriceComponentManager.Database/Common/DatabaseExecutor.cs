@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using PriceComponentManager.Database.Dto;
 using PriceComponentManager.Database.Enums;
 
-namespace PriceComponentManager.Database
+namespace PriceComponentManager.Database.Common
 {
 	public static class DatabaseExecutor
 	{

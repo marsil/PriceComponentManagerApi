@@ -2,11 +2,9 @@
 
 namespace PriceComponentManager.Database.Dto
 {
-	public class QueryDto : IHaveUniqueId
+	public class ExceptionDto : IHaveUniqueId
 	{
 		public Guid UniqueId { get; set; }
-
-		public int RowNr { get; set; }
 
 		public string UserId { get; set; }
 
@@ -14,10 +12,12 @@ namespace PriceComponentManager.Database.Dto
 
 		public string Parameters { get; set; }
 
-		public string Data { get; set; }
+		public string Messsage { get; set; }
 
-		public DateTime StartTime { get; set; }
+		public string Source { get; set; }
 
-		public DateTime? EndTime { get; set; }
+		public string StackTrace { get; set; }
+
+		public DateTime Time { get; set; }
 	}
 }

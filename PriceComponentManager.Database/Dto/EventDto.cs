@@ -7,6 +7,8 @@ namespace PriceComponentManager.Database.Dto
 	{
 		public Guid UniqueId { get; set; }
 
+		public string UserId { get; set; }
+
 		public int RowNr { get; set; }
 
 		public EventType Type { get; set; }
