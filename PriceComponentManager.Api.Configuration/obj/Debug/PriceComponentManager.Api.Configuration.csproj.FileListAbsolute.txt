@@ -1,0 +1,1 @@
+C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.Api.Configuration\obj\Debug\PriceComponentManager.Api.Configuration.csprojResolveAssemblyReference.cache
