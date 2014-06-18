@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Web.Http;
-
 using PriceComponentManager.Database.Dto;
 using PriceComponentManager.Database.Enums;
-
 using PriceComponentManger.WebApi.Commands;
 using PriceComponentManger.WebApi.Common;
 using PriceComponentManger.WebApi.Configuration;
@@ -12,7 +10,7 @@ namespace PriceComponentManger.WebApi.Controllers
 {
 	public class BaseController : ApiController
 	{
-		protected IHttpActionResult GetData<T>(Func<T> func)
+		protected IHttpActionResult GetData<TResult>(Func<TResult> func)
 		{
 			try
 			{
@@ -20,6 +18,20 @@ namespace PriceComponentManger.WebApi.Controllers
 			}
 			catch(Exception exception)
 			{
+				WebExceptionHandler.LogToDatabase(exception, this.Request, null);
+				return this.InternalServerError(exception);
+			}
+		}
+
+		protected IHttpActionResult GetData<TResult, TParameter>(Func<TParameter, TResult> func, TParameter parameters)
+		{
+			try
+			{
+				return this.Ok(func.Invoke(parameters));
+			}
+			catch(Exception exception)
+			{
+				WebExceptionHandler.LogToDatabase(exception, this.Request, parameters);
 				return this.InternalServerError(exception);
 			}
 		}
@@ -28,6 +40,8 @@ namespace PriceComponentManger.WebApi.Controllers
 		{
 			try
 			{
+				//if(!ModelState.IsValid) return BadRequest(ModelState);
+
 				data.UniqueId = Guid.NewGuid();
 				var eventDto = EventDtoCreator.Create(EventType.Created, entityType, data);
 
@@ -37,6 +51,7 @@ namespace PriceComponentManger.WebApi.Controllers
 			}
 			catch(Exception exception)
 			{
+				WebExceptionHandler.LogToDatabase(exception, this.Request, data);
 				return this.InternalServerError(exception);
 			}
 		}
@@ -52,6 +67,7 @@ namespace PriceComponentManger.WebApi.Controllers
 			}
 			catch(Exception exception)
 			{
+				WebExceptionHandler.LogToDatabase(exception, this.Request, data);
 				return this.InternalServerError(exception);
 			}
 		}
@@ -67,6 +83,7 @@ namespace PriceComponentManger.WebApi.Controllers
 			}
 			catch(Exception exception)
 			{
+				WebExceptionHandler.LogToDatabase(exception, this.Request, data);
 				return this.InternalServerError(exception);
 			}
 		}

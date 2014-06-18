@@ -4,7 +4,6 @@ using System.Web.Http.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PriceComponentManager.Database.Dto;
 using PriceComponentManager.Database.Enums;
-using PriceComponentManager.WebApi.Test.Infrastucture;
 using PriceComponentManager.WebApi.Test.TestData;
 using PriceComponentManger.WebApi.Controllers;
 
@@ -13,19 +12,6 @@ namespace PriceComponentManager.WebApi.Test.Controllers
 	[TestClass]
 	public class EventControllerTest
 	{
-		[Ignore]
-		[TestMethod]
-		public void AddEntityUsingPost_ShouldCreateAddEvent()
-		{
-			var result = WebRequestExecutor.PostData("carRental/Add", CarRentalTestData.GetCarRental());
-			var obj = WebRequestExecutor.SendRequest<CarRentalDto>("carRental/All");
-			//new CarRentalController().Add(CarRentalTestData.GetCarRental());
-
-			//var result = new EventController<CarRentalDto>().Get(EntityType.CarRental) as OkNegotiatedContentResult<List<EventDto<CarRentalDto>>>;
-
-			//AssertEvent(result, EventType.Created);
-		}
-
 		[TestMethod]
 		public void AddEntity_ShouldCreateAddEvent()
 		{

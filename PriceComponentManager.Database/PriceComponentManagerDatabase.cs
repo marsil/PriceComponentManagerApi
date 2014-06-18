@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using Newtonsoft.Json;
 using PriceComponentManager.Database.Common;
 using PriceComponentManager.Database.Dto;
@@ -86,6 +87,7 @@ namespace PriceComponentManager.Database
 
 		public void AddQuery(QueryDto queryDto)
 		{
+			var sql = @"INSERT INTO [dbo].[Query] VALUES(@Id, @UserId, @Url, @Parameters, @Data, @StartTime, @EndTime)";
 			var parameters = new List<SqlParameter>
 				                 {
 									new SqlParameter("@Id", SqlDbType.UniqueIdentifier, 16) { Value = queryDto.UniqueId },
@@ -97,12 +99,14 @@ namespace PriceComponentManager.Database
 									new SqlParameter("@EndTime", queryDto.EndTime ?? DateTime.UtcNow),
 				                 };
 
-			DatabaseExecutor.Insert("INSERT INTO [dbo].[Query] VALUES(aaa @Id, @UserId, @Url, @Parameters, @Data, @StartTime, @EndTime)", parameters);
+			DatabaseExecutor.Insert(sql, parameters);
 		}
 
-		public List<QueryDto> GetQueries()
+		public List<QueryDto> GetQueries(int? top)
 		{
-			var sql = @"SELECT [Id] ,[RowNr], [UserId], [Url], [Parameters], [Data], [StartTime], [EndTime] FROM [dbo].[Query] ORDER BY [RowNr]";
+			var topSql = top.HasValue ? " TOP " + top.Value.ToString(CultureInfo.InvariantCulture) : string.Empty;
+			var sql = @"SELECT" + topSql + " [Id] ,[RowNr], [UserId], [Url], [Parameters], [Data], [StartTime], [EndTime] FROM [dbo].[Query] ORDER BY [RowNr] DESC";
+			
 			return DatabaseExecutor.Select(
 				sql,
 				reader =>
@@ -144,9 +148,11 @@ namespace PriceComponentManager.Database
 			DatabaseExecutor.Insert(sql, parameters);
 		}
 
-		public List<ExceptionDto> GetExceptions()
+		public List<ExceptionDto> GetExceptions(int? top)
 		{
-			var sql = "@SELECT [Id], [UserId], [Url], [Parameters], [Message], [Source], [StackTrace], [Time] FROM [dbo].[Exception]";
+			var topSql = top.HasValue ? " TOP " + top.Value.ToString(CultureInfo.InvariantCulture) : string.Empty;
+			var sql = @"SELECT" + topSql + " [Id], [RowNr], [UserId], [Url], [Parameters], [Message], [Source], [StackTrace], [Time] FROM [dbo].[Exception] ORDER BY [RowNr] DESC";
+
 			return DatabaseExecutor.Select(
 				sql,
 				reader =>
@@ -157,6 +163,7 @@ namespace PriceComponentManager.Database
 						exceptionDtos.Add(new ExceptionDto
 						{
 							UniqueId = (Guid)reader["Id"],
+							RowNr = (int)reader["RowNr"],
 							UserId = (string)reader["UserId"],
 							Url = (string)reader["Url"],
 							Parameters = (string)reader["Parameters"],

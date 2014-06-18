@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -51,11 +52,29 @@ namespace PriceComponentManager.WebApi.Test.Infrastucture
 				streamWriter.Flush();
 			}
 
-			var httpResponse = (HttpWebResponse)webRequest.GetResponse();
-			using(var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+			try
 			{
-				var result = streamReader.ReadToEnd();
-				return result;
+				return ReadFromStream(webRequest.GetResponse());
+			}
+			catch(WebException e)
+			{
+				return ReadFromStream(e.Response);
+			}
+		}
+
+		private static string ReadFromStream(WebResponse response)
+		{
+			using (var stream = response.GetResponseStream())
+			{
+				if (stream == null)
+				{
+					return null;
+				}
+
+				using (var streamReader = new StreamReader(stream))
+				{
+					return streamReader.ReadToEnd();
+				}
 			}
 		}
 

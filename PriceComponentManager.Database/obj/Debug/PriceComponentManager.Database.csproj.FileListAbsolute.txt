@@ -1,8 +1,8 @@
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.Database\bin\Debug\PriceComponentManager.Database.dll.config
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.Database\bin\Debug\PriceComponentManager.Database.dll
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.Database\bin\Debug\PriceComponentManager.Database.pdb
-C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.Database\obj\Debug\PriceComponentManager.Database.csprojResolveAssemblyReference.cache
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.Database\obj\Debug\PriceComponentManager.Database.dll
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.Database\obj\Debug\PriceComponentManager.Database.pdb
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.Database\bin\Debug\Newtonsoft.Json.dll
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.Database\bin\Debug\Newtonsoft.Json.xml
+C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.Database\obj\Debug\PriceComponentManager.Database.csprojResolveAssemblyReference.cache

@@ -19,7 +19,7 @@ namespace PriceComponentManager.WebApi.Test.Controllers
 			var priceComponent = PriceComponentTestData.GetPriceComponent();
 			var resultOfAdd = controller.Add(priceComponent) as OkResult;
 
-			var result = controller.GetAll() as OkNegotiatedContentResult<List<PriceComponentDto>>;
+			var result = controller.Get() as OkNegotiatedContentResult<List<PriceComponentDto>>;
 
 			Assert.IsNotNull(resultOfAdd);
 			Assert.IsNotNull(result);

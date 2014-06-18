@@ -14,10 +14,10 @@ namespace PriceComponentManager.Database
 
 		void AddQuery(QueryDto queryDto);
 
-		List<QueryDto> GetQueries(); 
+		List<QueryDto> GetQueries(int? top);
 
 		void AddException(ExceptionDto exceptionDto);
 
-		List<ExceptionDto> GetExceptions();
+		List<ExceptionDto> GetExceptions(int? top);
 	}
 }

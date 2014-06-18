@@ -7,11 +7,11 @@ namespace PriceComponentManger.WebApi.Controllers
 {
 	public class QueryController : BaseController
 	{
-		public IHttpActionResult Get()
+		public IHttpActionResult Get(int? top = null)
 		{
 			try
 			{
-				return this.Ok(ServiceProvider<QueryDto>.Database.GetQueries());
+				return this.Ok(ServiceProvider<QueryDto>.Database.GetQueries(top));
 			}
 			catch(Exception exception)
 			{

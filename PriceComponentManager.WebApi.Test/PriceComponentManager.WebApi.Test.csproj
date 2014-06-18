@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Controllers\CarRentalControllerTest.cs" />
     <Compile Include="Controllers\EventControllerTest.cs" />
+    <Compile Include="Controllers\ExceptionControllerTest.cs" />
     <Compile Include="Controllers\PriceComponentControllerTest.cs" />
     <Compile Include="Controllers\QueryControllerTest.cs" />
     <Compile Include="Extension\ObjectExtension.cs" />

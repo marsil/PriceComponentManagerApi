@@ -8,6 +8,7 @@ using PriceComponentManager.WebApi.Test.Extension;
 using PriceComponentManager.WebApi.Test.TestData;
 using PriceComponentManger.WebApi.Controllers;
 using PriceComponentManger.WebApi.Models;
+using PriceComponentManger.WebApi.Queries.Parameters;
 
 namespace PriceComponentManager.WebApi.Test.Controllers
 {
@@ -21,7 +22,7 @@ namespace PriceComponentManager.WebApi.Test.Controllers
 			var carRental = CarRentalTestData.GetCarRental();
 			var resultOfAdd = controller.Add(carRental) as OkResult;
 
-			var result = controller.Get() as OkNegotiatedContentResult<CarRentalQueryData>;
+			var result = controller.Get(new CarRentalQueryPararmeters()) as OkNegotiatedContentResult<CarRentalQueryData>;
 
 			Assert.IsNotNull(resultOfAdd);
 			Assert.IsNotNull(result);

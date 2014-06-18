@@ -2,6 +2,7 @@
 using System.Text;
 using System.Web.Http;
 using PriceComponentManager.Database.Dto;
+using PriceComponentManger.WebApi.Common;
 using PriceComponentManger.WebApi.Configuration;
 
 namespace PriceComponentManger.WebApi
@@ -24,7 +25,7 @@ namespace PriceComponentManger.WebApi
 				        {
 							UniqueId = Guid.NewGuid(),
 							UserId = "2000",
-					        Url = Request.Path,
+							Url = RemoveApiPart(Request.Path),
 							Parameters = Request.QueryString.ToString(),
 							Data = data,
 							StartTime = DateTime.UtcNow, 
@@ -43,20 +44,12 @@ namespace PriceComponentManger.WebApi
 		protected void Application_Error(object sender, EventArgs e)
 		{
 			var exception = Server.GetLastError().GetBaseException();
-
-			var exceptionDto = new ExceptionDto
-				        {
-					        UniqueId = Guid.NewGuid(),
-					        UserId = "2000",
-					        Url = Request.Path,
-					        Parameters = Request.QueryString.ToString(),
-					        Messsage = exception.Message,
-					        Source = exception.Source,
-					        StackTrace = exception.StackTrace,
-					        Time = DateTime.UtcNow
-				        };
-
-			ServiceProvider<ExceptionDto>.Database.AddException(exceptionDto);
+			WebExceptionHandler.LogToDatabase(exception, Request);
 		}
+
+	    private static string RemoveApiPart(string url)
+	    {
+		    return url.Replace("/api/", string.Empty);
+	    }
     }
 }
