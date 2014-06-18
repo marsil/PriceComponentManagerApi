@@ -16,12 +16,12 @@ namespace PriceComponentManger.WebApi.Validation
 			{
 				if (actionArgument.Value == null)
 				{
-					ReturnBadArguments(actionContext, new List<string>());
+					ReturnBadArguments(actionContext, new List<string> { actionArgument.Key });
 				}
-				else
-				{
-					ValidateArgument(actionContext, actionArgument.Value);
-				}
+				//else
+				//{
+				//	ValidateArgument(actionContext, actionArgument.Value);
+				//}
 			}
 		}
 

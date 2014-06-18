@@ -22,7 +22,7 @@ namespace PriceComponentManager.WebApi.Test.Controllers
 			var carRental = CarRentalTestData.GetCarRental();
 			var resultOfAdd = controller.Add(carRental) as OkResult;
 
-			var result = controller.Get(new CarRentalQueryPararmeters()) as OkNegotiatedContentResult<CarRentalQueryData>;
+			var result = controller.Retrieve(new CarRentalQueryPararmeters()) as OkNegotiatedContentResult<CarRentalQueryData>;
 
 			Assert.IsNotNull(resultOfAdd);
 			Assert.IsNotNull(result);
@@ -35,6 +35,7 @@ namespace PriceComponentManager.WebApi.Test.Controllers
 			var controller = new CarRentalController();
 			var resultOfAdd = controller.Add(CarRentalTestData.GetCarRental()) as OkResult;
 			var resultAfterAdd = controller.All() as OkNegotiatedContentResult<List<CarRentalDto>>;
+			Assert.IsNotNull(resultAfterAdd);
 			var resultOfDelete = controller.Delete(resultAfterAdd.Content.Last()) as OkResult;
 			
 			var eventController = new EventController<CarRentalDto>();

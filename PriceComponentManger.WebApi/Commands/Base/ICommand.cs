@@ -1,4 +1,4 @@
-﻿namespace PriceComponentManger.WebApi.Commands
+﻿namespace PriceComponentManger.WebApi.Commands.Base
 {
 	public interface ICommand
 	{

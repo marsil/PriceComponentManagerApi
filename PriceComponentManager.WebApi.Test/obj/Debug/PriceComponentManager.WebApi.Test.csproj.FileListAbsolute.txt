@@ -20,3 +20,6 @@ C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\Pri
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.WebApi.Test\obj\Debug\PriceComponentManager.WebApi.Test.dll
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.WebApi.Test\obj\Debug\PriceComponentManager.WebApi.Test.pdb
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.WebApi.Test\bin\Debug\PriceComponentManager.WebApi.Test.dll.config
+C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.WebApi.Test\bin\Debug\System.Web.Http.Cors.dll
+C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.WebApi.Test\bin\Debug\System.Web.Cors.dll
+C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManager.WebApi.Test\bin\Debug\System.Web.Http.Cors.xml

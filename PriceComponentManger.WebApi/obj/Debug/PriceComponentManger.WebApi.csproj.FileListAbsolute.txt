@@ -18,3 +18,6 @@ C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\Pri
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManger.WebApi\bin\System.Web.Http.WebHost.xml
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManger.WebApi\obj\Debug\PriceComponentManger.WebApi.dll
 C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManger.WebApi\obj\Debug\PriceComponentManger.WebApi.pdb
+C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManger.WebApi\bin\System.Web.Cors.dll
+C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManger.WebApi\bin\System.Web.Http.Cors.dll
+C:\Users\2000\Documents\Visual Studio 2013\Projects\PriceComponentManagerApi\PriceComponentManger.WebApi\bin\System.Web.Http.Cors.xml

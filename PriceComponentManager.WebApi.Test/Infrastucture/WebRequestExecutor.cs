@@ -87,7 +87,7 @@ namespace PriceComponentManager.WebApi.Test.Infrastucture
 		//{
 		//	using (var client = new HttpClient())
 		//	{
-		//		var apiUrl = ConfigurationManager.AppSettings.Get("PriceComponentManagerApi");
+		//		var apiUrl = ConfigurationManager.AppSettings.Retrieve("PriceComponentManagerApi");
 		//		client.BaseAddress = new Uri(apiUrl);
 		//		client.DefaultRequestHeaders.Accept.Clear();
 		//		client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

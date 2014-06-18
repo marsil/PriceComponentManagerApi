@@ -1,4 +1,4 @@
-﻿using PriceComponentManger.WebApi.Commands;
+﻿using PriceComponentManger.WebApi.Commands.Base;
 
 namespace PriceComponentManger.WebApi.Messaging
 {

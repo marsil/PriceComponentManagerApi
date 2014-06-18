@@ -3,6 +3,7 @@ using System.Web.Http;
 using PriceComponentManager.Database.Dto;
 using PriceComponentManager.Database.Enums;
 using PriceComponentManger.WebApi.Commands;
+using PriceComponentManger.WebApi.Commands.Base;
 using PriceComponentManger.WebApi.Common;
 using PriceComponentManger.WebApi.Configuration;
 
@@ -40,8 +41,6 @@ namespace PriceComponentManger.WebApi.Controllers
 		{
 			try
 			{
-				//if(!ModelState.IsValid) return BadRequest(ModelState);
-
 				data.UniqueId = Guid.NewGuid();
 				var eventDto = EventDtoCreator.Create(EventType.Created, entityType, data);
 

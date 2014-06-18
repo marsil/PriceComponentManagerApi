@@ -13,7 +13,7 @@ namespace PriceComponentManager.WebApi.Test.Controllers
 	public class PriceComponentControllerTest
 	{
 		[TestMethod]
-		public void AddPriceComponent_ShouldReturnOnePriceComponent()
+		public void AddPriceComponent_ShouldReturnPriceComponent()
 		{
 			var controller = new PriceComponentController();
 			var priceComponent = PriceComponentTestData.GetPriceComponent();

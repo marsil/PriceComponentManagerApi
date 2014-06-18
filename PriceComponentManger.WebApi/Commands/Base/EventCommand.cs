@@ -1,7 +1,7 @@
 ﻿using PriceComponentManager.Database.Dto;
 using PriceComponentManger.WebApi.Configuration;
 
-namespace PriceComponentManger.WebApi.Commands
+namespace PriceComponentManger.WebApi.Commands.Base
 {
 	public class EventCommand<T> : ICommand where T : IHaveUniqueId
 	{
@@ -14,9 +14,9 @@ namespace PriceComponentManger.WebApi.Commands
 
 		public void Execute()
 		{
-			ServiceProvider<T>.EventRepository.Add(EventDto);
-			ServiceProvider<T>.DataRepository.Apply(EventDto);
-			ServiceProvider<T>.Database.AddEvent(EventDto);
+			ServiceProvider<T>.EventRepository.Add(this.EventDto);
+			ServiceProvider<T>.DataRepository.Apply(this.EventDto);
+			ServiceProvider<T>.Database.AddEvent(this.EventDto);
 		}
 	}
 }
