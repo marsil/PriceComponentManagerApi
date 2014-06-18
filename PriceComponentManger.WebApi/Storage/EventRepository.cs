@@ -34,7 +34,7 @@ namespace PriceComponentManger.WebApi.Storage
 
 		public void LoadAllEvents()
 		{
-			eventDtos = ServiceProvider<T>.Database.GetAllEvents<T>();
+			eventDtos = ServiceProvider<T>.Database.GetEvents<T>();
 			foreach (var eventDto in eventDtos)
 			{
 				ServiceProvider<T>.DataRepository.Apply(eventDto);

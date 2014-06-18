@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Web.Http;
 using PriceComponentManager.Database.Dto;
-using PriceComponentManager.Database.Enums;
 using PriceComponentManger.WebApi.Configuration;
 
 namespace PriceComponentManger.WebApi.Controllers
 {
-	public class EventController<T> : BaseController
-		where T : IHaveUniqueId
+	public class QueryController : BaseController
 	{
-		public IHttpActionResult Get(EntityType entityType)
+		public IHttpActionResult Get()
 		{
 			try
 			{
-				return this.Ok(ServiceProvider<T>.EventRepository.GetEvents(entityType));
+				return this.Ok(ServiceProvider<QueryDto>.Database.GetQueries());
 			}
 			catch(Exception exception)
 			{

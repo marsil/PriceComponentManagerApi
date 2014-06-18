@@ -94,7 +94,9 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CarRentalController.cs" />
     <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\PriceComponentController.cs" />
+    <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -107,7 +109,6 @@
     <Compile Include="Queries\CarRentalQuery.cs" />
     <Compile Include="Storage\EventRepository.cs" />
     <Compile Include="Storage\IDataRepository.cs" />
-    <Compile Include="Storage\IQueryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

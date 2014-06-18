@@ -10,10 +10,14 @@ namespace PriceComponentManager.Database
 
 		List<EventDto<T>> GetEvents<T>(EntityType entityType);
 
-		List<EventDto<T>> GetAllEvents<T>();
+		List<EventDto<T>> GetEvents<T>();
 
 		void AddQuery(QueryDto queryDto);
 
+		List<QueryDto> GetQueries(); 
+
 		void AddException(ExceptionDto exceptionDto);
+
+		List<ExceptionDto> GetExceptions();
 	}
 }
