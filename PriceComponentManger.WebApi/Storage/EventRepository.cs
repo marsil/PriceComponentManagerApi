@@ -10,6 +10,11 @@ namespace PriceComponentManger.WebApi.Storage
 	public class EventRepository<T> : IEventRepository<T>
 		where T : IHaveUniqueId
 	{
+		public EventRepository()
+		{
+			this.LoadAllEvents();
+		}
+
 		private static List<EventDto<T>> eventDtos = new List<EventDto<T>>();
 
 		public void Add(EventDto<T> item)
@@ -34,10 +39,10 @@ namespace PriceComponentManger.WebApi.Storage
 
 		public void LoadAllEvents()
 		{
-			eventDtos = ServiceProvider<T>.Database.GetEvents<T>();
+			eventDtos = ServiceProvider.Database.GetEvents<T>();
 			foreach (var eventDto in eventDtos)
 			{
-				ServiceProvider<T>.DataRepository.Apply(eventDto);
+				ServiceProvider.GetDataRepository<T>().Apply(eventDto);
 			}
 		}
 	}

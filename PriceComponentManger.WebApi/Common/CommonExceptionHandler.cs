@@ -23,7 +23,7 @@ namespace PriceComponentManger.WebApi.Common
 				Time = DateTime.UtcNow
 			};
 
-			ServiceProvider<ExceptionDto>.Database.AddException(exceptionDto);
+			ServiceProvider.Database.AddException(exceptionDto);
 		}
 	}
 }

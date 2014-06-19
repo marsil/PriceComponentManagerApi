@@ -13,7 +13,7 @@ namespace PriceComponentManger.WebApi.Controllers
 		{
 			try
 			{
-				return this.Ok(ServiceProvider<T>.EventRepository.GetEvents(entityType));
+				return this.Ok(ServiceProvider.GetEventRepository<T>().GetEvents(entityType));
 			}
 			catch(Exception exception)
 			{

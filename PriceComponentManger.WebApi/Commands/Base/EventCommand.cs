@@ -14,9 +14,9 @@ namespace PriceComponentManger.WebApi.Commands.Base
 
 		public void Execute()
 		{
-			ServiceProvider<T>.EventRepository.Add(this.EventDto);
-			ServiceProvider<T>.DataRepository.Apply(this.EventDto);
-			ServiceProvider<T>.Database.AddEvent(this.EventDto);
+			ServiceProvider.GetEventRepository<T>().Add(this.EventDto);
+			ServiceProvider.GetDataRepository<T>().Apply(this.EventDto);
+			ServiceProvider.Database.AddEvent(this.EventDto);
 		}
 	}
 }

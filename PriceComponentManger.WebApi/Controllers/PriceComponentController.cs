@@ -9,7 +9,7 @@ namespace PriceComponentManger.WebApi.Controllers
 	{
 		public IHttpActionResult Get()
 		{
-			return this.GetData(ServiceProvider<PriceComponentDto>.DataRepository.GetItems);
+			return this.GetData(ServiceProvider.GetDataRepository<PriceComponentDto>().GetItems);
 		}
 
 		[HttpPost]

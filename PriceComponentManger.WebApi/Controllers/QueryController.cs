@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Http;
-using PriceComponentManager.Database.Dto;
 using PriceComponentManger.WebApi.Configuration;
 
 namespace PriceComponentManger.WebApi.Controllers
@@ -11,7 +10,7 @@ namespace PriceComponentManger.WebApi.Controllers
 		{
 			try
 			{
-				return this.Ok(ServiceProvider<QueryDto>.Database.GetQueries(top));
+				return this.Ok(ServiceProvider.Database.GetQueries(top));
 			}
 			catch(Exception exception)
 			{

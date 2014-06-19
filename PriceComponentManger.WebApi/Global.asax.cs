@@ -31,7 +31,7 @@ namespace PriceComponentManger.WebApi
 							StartTime = DateTime.UtcNow, 
 				        };
 
-			ServiceProvider<QueryDto>.Database.AddQuery(queryDto);
+			ServiceProvider.Database.AddQuery(queryDto);
 		}
 
 		protected void Application_EndRequest(object sender, EventArgs e)

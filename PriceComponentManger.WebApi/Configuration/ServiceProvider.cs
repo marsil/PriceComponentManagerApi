@@ -1,4 +1,7 @@
-﻿using PriceComponentManager.Database;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using PriceComponentManager.Database;
 using PriceComponentManager.Database.Dto;
 using PriceComponentManger.WebApi.Messaging;
 using PriceComponentManger.WebApi.Storage;
@@ -6,15 +9,13 @@ using StructureMap;
 
 namespace PriceComponentManger.WebApi.Configuration
 {
-	public sealed class ServiceProvider<T>
-		where T : IHaveUniqueId
+	public sealed class ServiceProvider
 	{
 		private static readonly ICommandBus CommandBusInstance;
 		private static readonly IDatabase DatabaseInstance;
 		private static readonly bool IsInitialized;
 		private static readonly object LockThis = new object();
-		private static readonly IEventRepository<T> EventRepositoryInstance;
-		private static readonly IDataRepository<T> DataRepositoryInstance;
+		//private static readonly IDataRepository<T> DataRepositoryInstance;
 
 		static ServiceProvider()
 		{
@@ -25,9 +26,8 @@ namespace PriceComponentManger.WebApi.Configuration
 					ContainerBootstrapper.BootstrapStructureMap();
 					CommandBusInstance = ObjectFactory.GetInstance<ICommandBus>();
 					DatabaseInstance = ObjectFactory.GetInstance<IDatabase>();
-					EventRepositoryInstance = ObjectFactory.GetInstance<IEventRepository<T>>();
-					DataRepositoryInstance = ObjectFactory.GetInstance<IDataRepository<T>>();
-					EventRepository.LoadAllEvents();
+					//DataRepositoryInstance = ObjectFactory.GetInstance<IDataRepository<T>>();
+					//EventRepository.LoadAllEvents();
 					IsInitialized = true;
 				}
 			}
@@ -43,14 +43,15 @@ namespace PriceComponentManger.WebApi.Configuration
 			get { return DatabaseInstance; }
 		}
 
-		public static IEventRepository<T> EventRepository
+
+		public static IEventRepository<T> GetEventRepository<T>()
 		{
-			get { return EventRepositoryInstance; }
+			return ObjectFactory.GetInstance<IEventRepository<T>>();
 		}
 
-		public static IDataRepository<T> DataRepository
+		public static IDataRepository<T> GetDataRepository<T>() where T : IHaveUniqueId
 		{
-			get { return DataRepositoryInstance; }
+			return ObjectFactory.GetInstance<IDataRepository<T>>();
 		}
 	}
 }

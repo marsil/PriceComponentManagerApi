@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using PriceComponentManager.Database.Dto;
-using PriceComponentManager.Database.Enums;
 using PriceComponentManger.WebApi.Configuration;
 using PriceComponentManger.WebApi.Models;
 using PriceComponentManger.WebApi.Queries.Parameters;
@@ -11,8 +10,8 @@ namespace PriceComponentManger.WebApi.Queries
 	{
 		public static CarRentalQueryData GetCarRentalQueryData(CarRentalQueryPararmeters pararmeters)
 		{
-			var carRentals = ServiceProvider<CarRentalDto>.EventRepository.GetItems(EntityType.CarRental);
-			var priceComponents = ServiceProvider<PriceComponentDto>.EventRepository.GetItems(EntityType.PriceComponent);
+			var carRentals = ServiceProvider.GetDataRepository<CarRentalDto>().GetItems();
+			var priceComponents = ServiceProvider.GetDataRepository<PriceComponentDto>().GetItems();
 
 			return new CarRentalQueryData
 			{

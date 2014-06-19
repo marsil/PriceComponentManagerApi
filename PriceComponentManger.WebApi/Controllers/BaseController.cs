@@ -44,7 +44,7 @@ namespace PriceComponentManger.WebApi.Controllers
 				data.UniqueId = Guid.NewGuid();
 				var eventDto = EventDtoCreator.Create(EventType.Created, entityType, data);
 
-				ServiceProvider<T>.CommandBus.Send(new EventCommand<T>(eventDto));
+				ServiceProvider.CommandBus.Send(new EventCommand<T>(eventDto));
 
 				return this.Ok();
 			}
@@ -60,7 +60,7 @@ namespace PriceComponentManger.WebApi.Controllers
 			try
 			{
 				var eventDto = EventDtoCreator.Create(EventType.Deleted, entityType, data);
-				ServiceProvider<T>.CommandBus.Send(new EventCommand<T>(eventDto));
+				ServiceProvider.CommandBus.Send(new EventCommand<T>(eventDto));
 
 				return this.Ok();
 			}
@@ -76,7 +76,7 @@ namespace PriceComponentManger.WebApi.Controllers
 			try
 			{
 				var eventDto = EventDtoCreator.Create(EventType.Updated, entityType, data);
-				ServiceProvider<T>.CommandBus.Send(new EventCommand<T>(eventDto));
+				ServiceProvider.CommandBus.Send(new EventCommand<T>(eventDto));
 
 				return this.Ok();
 			}

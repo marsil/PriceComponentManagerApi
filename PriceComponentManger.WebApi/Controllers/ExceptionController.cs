@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Http;
-using PriceComponentManager.Database.Dto;
 using PriceComponentManger.WebApi.Common;
 using PriceComponentManger.WebApi.Configuration;
 
@@ -12,7 +11,7 @@ namespace PriceComponentManger.WebApi.Controllers
 		{
 			try
 			{
-				return this.Ok(ServiceProvider<ExceptionDto>.Database.GetExceptions(top));
+				return this.Ok(ServiceProvider.Database.GetExceptions(top));
 			}
 			catch(Exception exception)
 			{

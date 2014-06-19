@@ -65,7 +65,7 @@ namespace PriceComponentManger.WebApi.Controllers
 		[HttpGet]
 		public IHttpActionResult All()
 		{
-			return this.GetData(ServiceProvider<CarRentalDto>.DataRepository.GetItems);
+			return this.GetData(ServiceProvider.GetDataRepository<CarRentalDto>().GetItems);
 		}
 
 		[HttpPost]
